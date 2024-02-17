@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  mail:
+    username: dtuyt0@gmail.com
+    password: heaoewfxnpoyvmzh
+    host: smtp.gmail.com
+    port: 587
+    protocol: smtp
+    debug: false
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+cliniko:
+  url: https://api.au2.cliniko.com
+  api-key: MS0xMzUyNTM0MTc0NDgwNzM0NzUyLUV5Y1ZUU0FFQUdhV0U3TlBsRU9VZFVLSWVHNnF2dlVH-au2
+budibase:
+  url: https://budibase.app/api/public/v1
+  api-key: 50501cf557181f0b861a3f694d61c90c-11ed54b9aaec9316577b22cc3c49f1d7d06bfc53062dd8a3150f15a10e73760afd4c0609a2ee10
+  x-budibase-app-id: app_dev_hktest_d1dd3ccd9618450e96eee0cd1ead2457
+  booking-table-id: ta_cb89af04c561441a99a95b3c64c34d86
+  booking-column: booking_id_cliniko
+  patient-table-id: ta_340b6ff1663c41f4a322e3dd5f5ad0df
+  patient-column: patient_id_cliniko
