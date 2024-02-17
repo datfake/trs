@@ -1,0 +1,9 @@
+com\aaujar\trscoreapi\model\mail\Attachment.class
+com\aaujar\trscoreapi\model\mail\EmailBean.class
+com\aaujar\trscoreapi\utils\budibase\BudibaseAPI.class
+com\aaujar\trscoreapi\scheduler\ScheduledCliniko.class
+com\aaujar\trscoreapi\service\mail\SendMailServiceImpl.class
+com\aaujar\trscoreapi\config\MailConfiguration.class
+com\aaujar\trscoreapi\TrsCoreApiApplication.class
+com\aaujar\trscoreapi\config\TemplateEngineConfig.class
+com\aaujar\trscoreapi\service\mail\SendMailService.class
