@@ -52,9 +52,9 @@ public class ScheduledCliniko {
     @Value("${budibase.patient-column}")
     private String budiBasePatientColumn;
 
-    @Scheduled(cron = "* * * * * ?") //Run every
+//    @Scheduled(cron = "* * * * * ?") //Run every
 //    @Scheduled(cron = "0 */1 * * * ?") //Run every 1 minute
-//    @Scheduled(cron = "0 */10 * * * ?") //Run every 10 minutes
+    @Scheduled(cron = "0 */10 * * * ?") //Run every 10 minutes
     public void doScheduleTask() {
         syncPatients();
         syncBookAppointment();

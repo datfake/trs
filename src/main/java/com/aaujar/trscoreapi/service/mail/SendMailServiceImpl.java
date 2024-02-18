@@ -24,6 +24,8 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 //import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 import java.util.Date;
 
@@ -91,7 +93,7 @@ public class SendMailServiceImpl implements SendMailService {
         try {
             // (1) Loading template
             Context myContext = new Context();
-            myContext.setVariable("link", "https://hktest.budibase.app/embed/trs#/getting-started/patientId=" + patientId + "&name=" + fullName);
+            myContext.setVariable("link", "https://hktest.budibase.app/embed/trs#/getting-started/patientId=" + patientId + "&name=" + URLEncoder.encode(fullName, StandardCharsets.UTF_8));
             myContext.setVariable("fullName", fullName);
 
             String htmlTemplate = templateEngine.process("welcome-patient", myContext);
