@@ -52,9 +52,9 @@ public class ScheduledCliniko {
     @Value("${budibase.patient-column}")
     private String budiBasePatientColumn;
 
-//    @Scheduled(cron = "* * * * * ?") //Run every
+    @Scheduled(cron = "* * * * * ?") //Run every
 //    @Scheduled(cron = "0 */1 * * * ?") //Run every 1 minute
-    @Scheduled(cron = "0 */10 * * * ?") //Run every 10 minutes
+//    @Scheduled(cron = "0 */10 * * * ?") //Run every 10 minutes
     public void doScheduleTask() {
         syncPatients();
         syncBookAppointment();
@@ -89,6 +89,7 @@ public class ScheduledCliniko {
                         objectAppointment.addProperty("booking_id_cliniko", id);
                         objectAppointment.addProperty("startAt", jsonObject.getString("starts_at"));
                         objectAppointment.addProperty("endAt", jsonObject.getString("ends_at"));
+                        objectAppointment.addProperty("note", !jsonObject.isNull("notes") ? jsonObject.getString("notes") : "");
 
                         this.setPractitioner(jsonObject, objectAppointment);
                         this.setType(jsonObject, objectAppointment);
@@ -227,8 +228,8 @@ public class ScheduledCliniko {
                         String lastName = jsonObject.getString("last_name");
                         String email = !jsonObject.isNull("email")? jsonObject.getString("email") : "";
                         objectPatient.addProperty("title", jsonObject.getString("title"));
-                        objectPatient.addProperty("firstName", firstName);
-                        objectPatient.addProperty("lastName", lastName);
+                        objectPatient.addProperty("first_name", firstName);
+                        objectPatient.addProperty("last_name", lastName);
                         objectPatient.addProperty("email", email);
 
                         JSONArray patientPhoneNumbers = jsonObject.getJSONArray("patient_phone_numbers");
@@ -278,7 +279,7 @@ public class ScheduledCliniko {
         }
     }
 
-    private static final String getBasicAuthenticationHeader(String username, String password) {
+    private static String getBasicAuthenticationHeader(String username, String password) {
         String valueToEncode = username + ":" + password;
         return "Basic " + Base64.getEncoder().encodeToString(valueToEncode.getBytes());
     }

@@ -28,6 +28,7 @@ public class BudibaseAPI {
             if (response.isSuccessful()) {
                 JSONObject responseJson = new JSONObject(response.body().string());
                 JSONArray datas = responseJson.getJSONArray("data");
+                response.body().close();
                 if (datas.isEmpty()) return true;
             } else {
                 log.error("500 Internal Server Error From BudiBase");
@@ -53,6 +54,9 @@ public class BudibaseAPI {
 
         try {
             Response response = client.newCall(request).execute();
+            if (response.isSuccessful()) {
+                response.body().close();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
